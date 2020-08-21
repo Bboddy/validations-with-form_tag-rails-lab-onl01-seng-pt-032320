@@ -3,8 +3,22 @@ class PostsController < ApplicationController
 
   def show
   end
+  
+  def new
+  end
 
   def edit
+  end
+  
+  def create
+    @post = Post.new(post_path)
+    
+    if @post.valid? 
+      @post.save
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def update

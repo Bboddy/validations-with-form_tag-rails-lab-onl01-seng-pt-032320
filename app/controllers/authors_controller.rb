@@ -5,6 +5,9 @@ class AuthorsController < ApplicationController
 
   def new
   end
+  
+  def edit
+  end
 
   def create
     @author = Author.new(author_params)
@@ -14,6 +17,14 @@ class AuthorsController < ApplicationController
       redirect_to author_path(@author)
     else
       render :new
+    end
+  end
+  
+  def update
+    if @author.update(author_path)
+      redirect_to author_path(@author)
+    else
+      render :edit
     end
   end
 
